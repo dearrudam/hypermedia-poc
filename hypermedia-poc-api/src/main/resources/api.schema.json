@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "required": [
+    "entities"
+  ],
+  "properties": {
+    "entities": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/AlertMessage"
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AlertMessage": {
+      "type": "object",
+      "required": [
+        "class",
+        "data"
+      ],
+      "properties": {
+        "entityType": {
+          "type": "string",
+          "enum": [
+            "alert-message"
+          ]
+        },
+        "data": {
+          "type": "object",
+          "required": [
+            "message"
+          ],
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": [
+                "info",
+                "error",
+                "warning"
+              ]
+            },
+            "message": {
+              "type": "string"
+            },
+            "detail": {
+              "type": "string"
+            },
+            "isHTML": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  }
+}
